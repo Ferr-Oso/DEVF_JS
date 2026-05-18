@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Caja de Comentarios</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+  <header>
+    <p class="eyebrow">Ejercicio</p>
+    <h1>Caja de <em>comentarios</em></h1>
+  </header>
+
+  <div class="form-card">
+    <div class="author-row">
+      <div class="field" id="field-name">
+        <label for="input-name">Tu nombre</label>
+        <input type="text" id="input-name" placeholder="Ej. Sofía Ramírez" maxlength="60"/>
+        <span class="error-msg">Por favor escribe tu nombre.</span>
+      </div>
+      <div class="field" id="field-email">
+        <label for="input-email">Correo (opcional)</label>
+        <input type="email" id="input-email" placeholder="sofia@ejemplo.com" maxlength="80"/>
+        <span class="error-msg">Correo no válido.</span>
+      </div>
+    </div>
+
+    <div class="field comment-field" id="field-comment">
+      <label for="input-comment">Comentario</label>
+      <textarea id="input-comment" placeholder="Escribe tu comentario aquí…" maxlength="500"></textarea>
+      <span class="error-msg">El comentario no puede estar vacío.</span>
+    </div>
+
+    <div class="form-footer">
+      <span class="char-counter" id="char-counter">0 / 500</span>
+      <button class="btn-submit" id="btn-add">Publicar comentario</button>
+    </div>
+  </div>
+
+  <div class="comments-header">
+    <h2>Comentarios</h2>
+    <span class="count-badge" id="count-badge">0</span>
+  </div>
+
+  <div id="comments-list">
+    <div class="empty-state" id="empty-state">
+      <p class="icon">💬</p>
+      <p>Todavía no hay comentarios. ¡Sé el primero!</p>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
