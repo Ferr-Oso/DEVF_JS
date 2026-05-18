@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seguimiento de Libros</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="bg-blob blob-1"></div>
+  <div class="bg-blob blob-2"></div>
+
+  <main class="container">
+
+<header class="hero">
+  <p class="eyebrow">Tu biblioteca personal</p>
+  <h1 class="hero-title">
+    TU SEGUIMIENTO<br/>
+    <span class="outline">DE LIBROS</span>
+  </h1>
+</header>
+
+    <!-- FORMULARIO -->
+    <div class="form-wrap">
+      <div class="field-group">
+        <input
+          type="text"
+          id="input-book"
+          class="book-input"
+          placeholder="Título del libro o nota de lectura..."
+          maxlength="120"
+          autocomplete="off"
+        />
+        <button id="btn-add" class="btn-add">Agregar →</button>
+      </div>
+      <span class="error-msg" id="error-msg">Escribe el nombre de un libro primero.</span>
+    </div>
+
+    <!-- CONTADOR -->
+    <div class="list-header" id="list-header" style="display:none;">
+      <span class="list-title">En tu lista</span>
+      <span class="count-pill" id="count-pill">0</span>
+    </div>
+
+    <!-- LISTA -->
+    <ul class="book-list" id="book-list"></ul>
+
+    <!-- EMPTY STATE -->
+    <div class="empty-state" id="empty-state">
+      <p class="empty-icon">📖</p>
+      <p class="empty-text">Aún no has agregado ningún libro.<br/>¡Empieza ahora!</p>
+    </div>
+
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>

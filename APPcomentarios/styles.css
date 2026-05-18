@@ -1,0 +1,319 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:      #0a0a0b;
+  --surface: rgba(255,255,255,0.04);
+  --border:  rgba(255,255,255,0.08);
+  --white:   #ffffff;
+  --muted:   rgba(255,255,255,0.45);
+  --orange:  #f4521e;
+  --orange2: #ff7043;
+  --sans:    'Inter', sans-serif;
+  --display: 'Syne', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--white);
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5rem 1.5rem 6rem;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ──  DECORATIVOS  ── */
+.bg-blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.blob-1 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, #1a4a3a 0%, #0d2e28 60%, transparent 100%);
+  top: -150px;
+  left: -200px;
+}
+
+.blob-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #7a2800 0%, #3d1200 60%, transparent 100%);
+  bottom: -100px;
+  right: -150px;
+}
+
+/* ── CONTAINER ── */
+.container {
+  width: 100%;
+  max-width: 700px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* ── HERO ── */
+.hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  align-items: center;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.hero-title {
+  font-family: var(--display);
+  font-size: clamp(3rem, 10vw, 6.5rem);
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  text-align: center;
+}
+
+.hero-title .outline {
+  -webkit-text-stroke: 2px rgba(255, 255, 255, 0.3);
+  color: transparent;
+}
+
+/* ── FORMULARIO ── */
+.form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-group {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.book-input {
+  flex: 1;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--white);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 16px 24px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  letter-spacing: 0.01em;
+}
+
+.book-input::placeholder { color: rgba(255,255,255,0.25); }
+
+.book-input:focus {
+  border-color: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.07);
+}
+
+.book-input.has-error { border-color: var(--orange); }
+
+.btn-add {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--white);
+  background: var(--orange);
+  border: none;
+  border-radius: 50px;
+  padding: 16px 28px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s, transform 0.1s;
+  letter-spacing: 0.02em;
+}
+
+.btn-add:hover  { background: var(--orange2); }
+.btn-add:active { transform: scale(0.97); }
+
+.error-msg {
+  font-size: 12px;
+  color: var(--orange);
+  padding-left: 24px;
+  letter-spacing: 0.03em;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+
+.error-msg.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── ENCABEZADO LISTA ── */
+.list-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.list-title {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.count-pill {
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--orange);
+  color: var(--white);
+  border-radius: 50px;
+  padding: 2px 10px;
+  letter-spacing: 0.05em;
+}
+
+/* ── LISTA ── */
+.book-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── CARD LIBRO ── */
+.book-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.1rem 1.4rem;
+  animation: fadeSlide 0.3s ease;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.book-item:hover {
+  border-color: rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+}
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.book-info { flex: 1; display: flex; flex-direction: column; gap: 4px; }
+
+.book-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.book-date {
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.btn-delete {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 6px 14px;
+  cursor: pointer;
+  flex-shrink: 0;
+  letter-spacing: 0.04em;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.btn-delete:hover {
+  color: var(--orange);
+  border-color: var(--orange);
+  background: rgba(244, 82, 30, 0.08);
+}
+
+/* ── EMPTY STATE ── */
+.empty-state {
+  text-align: center;
+  padding: 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.empty-icon { font-size: 2.5rem; }
+
+.empty-text {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  background: var(--white);
+  color: var(--bg);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  padding: 11px 20px;
+  border-radius: 50px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.22s, transform 0.22s;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 500px) {
+  body { padding: 3rem 1.2rem 5rem; }
+  .field-group { flex-direction: column; }
+  .btn-add { width: 100%; text-align: center; }
+}
