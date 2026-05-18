@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <main class="container">
+
+    <div class="heading">
+      <span class="tag">HERRAMIENTA v1.0</span>
+      <h1 class="title">PASSWORD<br/><em>GENERATOR</em></h1>
+    </div>
+
+    <div class="card">
+
+      <span class="tag tag-card">RESULTADO</span>
+
+      <!-- Output -->
+      <div class="output-wrap">
+        <span id="output-text" class="output-text is-placeholder">_ _ _ _ _ _ _ _ _ _</span>
+        <button id="btn-copy" class="btn-copy" title="Copiar">
+          COPIAR
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="1"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Longitud -->
+      <div class="control-row">
+        <span class="mono-label">Longitud de caracteres</span>
+        <span id="length-value" class="length-num">10</span>
+      </div>
+      <input type="range" id="length-slider" class="slider" min="4" max="32" value="10"/>
+
+      <div class="divider"></div>
+
+      <!-- Opciones -->
+      <div class="options-grid">
+        <label class="chk-label">
+          <input type="checkbox" id="chk-upper" checked/>
+          <span class="chk-box"></span>
+          Mayúsculas <em class="sample">ABC</em>
+        </label>
+        <label class="chk-label">
+          <input type="checkbox" id="chk-lower" checked/>
+          <span class="chk-box"></span>
+          Minúsculas <em class="sample">abc</em>
+        </label>
+        <label class="chk-label">
+          <input type="checkbox" id="chk-numbers" checked/>
+          <span class="chk-box"></span>
+          Números <em class="sample">123</em>
+        </label>
+        <label class="chk-label">
+          <input type="checkbox" id="chk-symbols"/>
+          <span class="chk-box"></span>
+          Símbolos <em class="sample">!@#</em>
+        </label>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Fortaleza -->
+      <div class="strength-row">
+        <span class="mono-label">FORTALEZA</span>
+        <div class="strength-right">
+          <span id="strength-text" class="strength-word">---</span>
+          <div class="bars">
+            <div class="bar" id="bar1"></div>
+            <div class="bar" id="bar2"></div>
+            <div class="bar" id="bar3"></div>
+            <div class="bar" id="bar4"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón -->
+      <button id="btn-generate" class="btn-generate">
+        GENERAR CONTRASEÑA &nbsp;→
+      </button>
+
+      <!-- Tiempo estimado -->
+      <div class="crack-row">
+        <span class="mono-label">TIEMPO PARA DESCIFRAR</span>
+        <span id="stat-time" class="crack-time">?</span>
+      </div>
+
+    </div>
+
+  </main>
+
+  <div id="toast" class="toast">¡COPIADO!</div>
+
+  <script src="script.js"></script>
+</body>
+</html>

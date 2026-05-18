@@ -1,0 +1,351 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --black:   #0d0d0d;
+  --white:   #f5f4f0;
+  --neon:    #caff00;
+  --mono:    'IBM Plex Mono', monospace;
+  --display: 'Bebas Neue', sans-serif;
+}
+
+body {
+  font-family: var(--mono);
+  background: var(--white);
+  color: var(--black);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* ── CONTAINER ── */
+.container {
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── HEADING ── */
+.heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.title {
+  font-family: var(--display);
+  font-size: clamp(3.5rem, 12vw, 5.5rem);
+  line-height: 0.92;
+  letter-spacing: 0.02em;
+  color: var(--black);
+}
+
+.title em {
+  font-style: normal;
+  background: var(--neon);
+  padding: 0 6px;
+}
+
+/* ── TAG ── */
+.tag {
+  display: inline-block;
+  background: var(--neon);
+  color: var(--black);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  padding: 4px 10px;
+  border: 1.5px solid var(--black);
+  text-transform: uppercase;
+  align-self: flex-start;
+}
+
+/* ── CARD ── */
+.card {
+  background: var(--black);
+  color: var(--white);
+  padding: 2rem;
+  border: 2px solid var(--black);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tag-card {
+  position: absolute;
+  top: -14px;
+  left: 1.5rem;
+}
+
+/* ── OUTPUT ── */
+.output-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0 1.25rem;
+}
+
+.output-text {
+  font-family: var(--mono);
+  font-size: clamp(1.1rem, 4vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--neon);
+  word-break: break-all;
+  flex: 1;
+  line-height: 1.35;
+}
+
+.output-text.is-placeholder {
+  color: #3a3a3a;
+  letter-spacing: 0.25em;
+  font-size: 1.2rem;
+}
+
+.btn-copy {
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--black);
+  background: var(--neon);
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  text-transform: uppercase;
+  transition: background 0.15s;
+}
+
+.btn-copy:hover { background: #b0e000; }
+
+/* ── DIVIDER ── */
+.divider {
+  border-top: 1px solid #222;
+  margin: 1.25rem 0;
+}
+
+/* ── CONTROL ROW ── */
+.control-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.mono-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #777;
+}
+
+.length-num {
+  font-family: var(--display);
+  font-size: 2.8rem;
+  color: var(--neon);
+  line-height: 1;
+}
+
+/* ── SLIDER ── */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  background: #2a2a2a;
+  outline: none;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--neon);
+  border: 2px solid var(--black);
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+
+.slider::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+.slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: var(--neon);
+  border: 2px solid var(--black);
+  border-radius: 0;
+  cursor: pointer;
+}
+
+/* ── OPCIONES ── */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 24px;
+}
+
+.chk-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  color: var(--white);
+  cursor: pointer;
+  user-select: none;
+  letter-spacing: 0.03em;
+}
+
+.chk-label input { display: none; }
+
+.chk-box {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #555;
+  flex-shrink: 0;
+  position: relative;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.chk-label input:checked + .chk-box {
+  background: var(--neon);
+  border-color: var(--neon);
+}
+
+.chk-label input:checked + .chk-box::after {
+  content: '';
+  position: absolute;
+  top: 1px; left: 4px;
+  width: 5px; height: 9px;
+  border: 2px solid var(--black);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg);
+}
+
+.sample {
+  font-style: normal;
+  font-size: 10px;
+  color: #555;
+  margin-left: 2px;
+}
+
+/* ── STRENGTH ── */
+.strength-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.strength-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.strength-word {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  min-width: 60px;
+  text-align: right;
+  color: var(--white);
+  transition: color 0.25s;
+}
+
+.bars { display: flex; gap: 5px; }
+
+.bar {
+  width: 11px;
+  height: 26px;
+  border: 1.5px solid #333;
+  background: transparent;
+  transition: background 0.25s, border-color 0.25s;
+}
+
+.bar.weak   { background: #ff4d4d; border-color: #ff4d4d; }
+.bar.fair   { background: #ff8c42; border-color: #ff8c42; }
+.bar.medium { background: #f8cd65; border-color: #f8cd65; }
+.bar.strong { background: var(--neon); border-color: var(--neon); }
+
+/* ── BTN GENERAR ── */
+.btn-generate {
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--neon);
+  border: none;
+  width: 100%;
+  padding: 16px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-bottom: 1.25rem;
+}
+
+.btn-generate:hover  { background: #b0e000; }
+.btn-generate:active { transform: scale(0.99); }
+
+/* ── CRACK TIME ── */
+.crack-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #161616;
+  padding: 12px 14px;
+}
+
+.crack-time {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  color: var(--neon);
+  letter-spacing: 0.05em;
+}
+
+/* ── TOAST ── */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--neon);
+  color: var(--black);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 10px 18px;
+  border: 2px solid var(--black);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 400px) {
+  .options-grid  { grid-template-columns: 1fr; }
+  .card          { padding: 1.5rem; }
+}
